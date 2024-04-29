@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { PORT } = require('./config/server-config.js');
 const {MONGO_CONNECTION_URL} = require('./config/db-config.js');
+const apiRoutes = require('./routes/index.js');
 
 const connect = async() => {
     try {
@@ -16,6 +17,8 @@ const runServer = () => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     
+    app.use('/api',apiRoutes);
+
     app.listen(PORT, async () => {
         console.log(`server started on port : ${PORT}`);
         await connect();
