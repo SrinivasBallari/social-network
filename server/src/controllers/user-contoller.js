@@ -48,6 +48,24 @@ const login = async (req, res) => {
     }
 };
 
+const uploadBankStatements = async (req, res) => {
+    try {
+        const response = await userService.uploadBankStatements(req.user.id,req.files);
+        return res.status(200).json({
+            status: "success",
+            data: { message: "uploaded documents successfully" , bankStatements : response},
+        });
+    } catch (error) {
+        console.log("error in UserController.uploadBankStatements : ", error);
+        if (error.message == "User not found") {
+            return res
+                .status(404)
+                .json({ message: "User not found" });
+        }
+        return res.status(500).json({ message: "Internal server error" });
+    }
+};
+
 const isAuthenticated = async (req, res) => {
     try {
         const response = await userService.isAuthenticated(
@@ -71,5 +89,6 @@ const isAuthenticated = async (req, res) => {
 module.exports = {
     register,
     login,
-    isAuthenticated,
+    uploadBankStatements,
+    isAuthenticated
 };
