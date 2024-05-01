@@ -79,7 +79,7 @@ class UserService {
         try {
             const user = await this.userRepo.read(userId);
             if (!user) {
-                return res.status(404).json({ message: "User not found" });
+                throw({message: "User not found"});
             }
 
             const uploadedFiles = [];

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const {SALT} = require('../config/server-config');
+const { SALT } = require("../config/server-config");
 
 const userSchema = new mongoose.Schema(
     {
@@ -24,13 +24,19 @@ const userSchema = new mongoose.Schema(
         bankStatements: [String],
         industry: {
             type: String,
-            default: null
+            default: null,
         },
         interests: [{ type: String }],
         username: {
             type: String,
-            default: null
+            default: null,
         },
+        friendRequests: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "FriendRequest",
+            },
+        ],
         friends: [
             {
                 type: mongoose.Schema.Types.ObjectId,

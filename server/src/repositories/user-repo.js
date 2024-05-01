@@ -19,6 +19,8 @@ class UserRepo extends CrudRepo{
         }
     }
 
+    
+
 }
 
 module.exports = UserRepo;
