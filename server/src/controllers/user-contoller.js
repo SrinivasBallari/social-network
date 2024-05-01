@@ -86,9 +86,20 @@ const isAuthenticated = async (req, res) => {
     }
 };
 
+const updateUserProfile = async (req,res) => {
+    try {
+        const response = userService.updateUserProfile(req.user.id,req.body);
+        return res.status(200).json({ message: 'user profile updated successfully'});
+      } catch (error) {
+        console.error('error in UserController.updateIndustryField :', error);
+        res.status(500).json({ message: 'Internal server error' });
+      }
+}
+
 module.exports = {
     register,
     login,
     uploadBankStatements,
-    isAuthenticated
+    isAuthenticated,
+    updateUserProfile
 };

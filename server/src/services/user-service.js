@@ -107,6 +107,26 @@ class UserService {
             throw error;
         }
     }
+
+    async updateIndustryField(userId,data){
+        try {
+            const response = await this.userRepo.update(userId,data);
+            return response;
+        } catch (error) {
+            console.log("error occurred in UserService.updateIndustryField: ", error);
+            throw error;
+        }
+    }
+
+    async updateUserProfile(userId,data){
+        try {
+            const response = await this.userRepo.update(userId,data);
+            return response;
+        } catch (error) {
+            console.log("error occurred in UserService.updateUserProfile: ", error);
+            throw error;
+        }
+    }
 }
 
 module.exports = UserService;

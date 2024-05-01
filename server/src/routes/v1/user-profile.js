@@ -21,4 +21,10 @@ router.post(
     UserController.uploadBankStatements    
 );
 
+router.put(
+  '/update',
+   validateAuthToken,
+   UserController.updateUserProfile
+);
+
 module.exports = router;

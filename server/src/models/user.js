@@ -24,18 +24,12 @@ const userSchema = new mongoose.Schema(
         bankStatements: [String],
         industry: {
             type: String,
-            enum: [
-                "Finance",
-                "Advertising",
-                "Software Technology",
-                "Media and Broadcasting",
-                "Pharmacy",
-                "Healthcare and Biotechnology",
-            ],
+            default: null
         },
         interests: [{ type: String }],
         username: {
             type: String,
+            default: null
         },
         friends: [
             {
