@@ -33,7 +33,6 @@ class FriendService {
     async respondToFriendRequest(requestId, response) {
         try {
             const friendRequest = await this.friendRepo.read(requestId);
-            console.log(friendRequest);
             if (!friendRequest) {
                 throw { message: "Friend request not found" };
             }

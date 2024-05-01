@@ -10,11 +10,7 @@ const postSchema = new mongoose.Schema(
         content: {
             type: String,
         },
-        media: [
-            {
-                type: String,
-            },
-        ],
+        media: [String],
     },
     { timestamps: true }
 );

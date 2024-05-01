@@ -1,6 +1,6 @@
 const { UserRepo } = require("../repositories/index");
 const { JWT_KEY } = require("../config/server-config");
-const cloudinary = require('../config/cloudinary-config')
+const cloudinary = require('../config/cloudinary-config');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 

@@ -1,4 +1,5 @@
 module.exports = {
     User : require('./user'),
-    FriendRequest : require('./friend-request')
+    FriendRequest : require('./friend-request'),
+    Post : require('./post')
 }
