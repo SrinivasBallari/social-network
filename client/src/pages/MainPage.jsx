@@ -1,20 +1,40 @@
 import React from "react";
 import { names, blogs } from "../Helpers/data";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 const MainPage = () => {
+
+  const navigate = useNavigate();
+  const { user, logout, login } = useContext(AuthContext);
+  
+  const handleLogOut = async (e) => {
+    e.preventDefault();
+    localStorage.removeItem('auth-token');
+    localStorage.removeItem('user');
+    navigate('/');
+  }
+
   return (
+
+    
+    // <>
+    //   {user && <div>hey</div>}
+
+    // </>
+
     <div className="w-full h-full flex-col gap-2 items-center bg-gradient-to-r from-blue-300 to-blue-600 flex justify-center">
       <div className="mt-10 mb-6 flex gap-4 ">
-        <button className="border px-5 py-2 rounded-md shadow-2xl text-blue-500 bg-white">
-          {" "}
-          Post
-        </button>
-        <button className="border px-5 py-2 rounded-md shadow-2xl text-blue-500 bg-white">
+        <Link className='border px-5 py-2 rounded-md shadow-2xl text-blue-500 bg-white' to={'/create-post'}>
+          New Post
+        </Link>
+        <Link className="border px-5 py-2 rounded-md shadow-2xl text-blue-500 bg-white" to={'/ask-question'}>
           Ask Question{" "}
-        </button>
-        <button className="border px-5 py-2 rounded-md shadow-2xl text-blue-500 bg-white">
-          <Link>Logout</Link>
+        </Link>
+        <button className="border px-5 py-2 rounded-md shadow-2xl text-blue-500 bg-white" onClick={handleLogOut}>
+          Logout
         </button>
       </div>
       <div className="flex gap-10" >

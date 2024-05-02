@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 class UserService {
+    
     constructor() {
         this.userRepo = new UserRepo();
     }
@@ -13,7 +14,7 @@ class UserService {
         try {
             return bcrypt.compareSync(userInputPassword, hashedPassword);
         } catch (error) {
-            console.log("Error occured in validating token", error);
+            console.log("Error occured in validating password", error);
             throw { error };
         }
     }

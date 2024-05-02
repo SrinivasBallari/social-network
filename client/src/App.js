@@ -6,6 +6,8 @@ import Login from "./Components/Login"
 import UserProfile from './pages/UserProfile'
 import MainPage from './pages/MainPage'
 import FileUpload from './pages/FileUpload'
+import CreatePost from './pages/CreatePost'
+import AskQuestion from './pages/AskQuestion'
 
 const App = () => {
   return (
@@ -18,6 +20,9 @@ const App = () => {
         <Route path='/user-profile' element={ <UserProfile />} />
         <Route path='/file-upload' element={ <FileUpload />} />
         <Route path='/main-page' element={<MainPage /> } />
+        <Route path='/create-post' element={<CreatePost /> } />
+        <Route path='/ask-question' element={<AskQuestion/> } />
+
       </Routes>
     </Router>
     </>

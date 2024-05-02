@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const UserController  = require('../../controllers/user-contoller');
+const FeedController = require('../../controllers/feed-controller');
 const {validateAuthToken} = require('../../middleware/validateAuthToken');
 const multer = require('multer');
 
@@ -25,6 +26,12 @@ router.put(
   '/update',
    validateAuthToken,
    UserController.updateUserProfile
+);
+
+router.get(
+  '/feed',
+  validateAuthToken,
+  FeedController.getUserFeed
 );
 
 module.exports = router;

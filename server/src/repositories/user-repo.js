@@ -19,7 +19,16 @@ class UserRepo extends CrudRepo{
         }
     }
 
+    async getFriends(userId) {
+        try {
+            const user = await User.findById(userId).populate('friends');
+            return user.friends;        
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
     
+    }    
 
 }
 

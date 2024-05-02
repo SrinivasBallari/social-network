@@ -4,7 +4,7 @@ const questionService = new QuestionService();
 const askQuestion = async (req, res) => {
     try {
         const createdQuestion = await questionService.askQuestion(
-            req.user,
+            req.user.id,
             req.body.question
         );
         return res.status(200).json(createdQuestion);
