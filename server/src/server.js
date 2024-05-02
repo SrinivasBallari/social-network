@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const { PORT } = require('./config/server-config.js');
 const {MONGO_CONNECTION_URL} = require('./config/db-config.js');
 const apiRoutes = require('./routes/index.js');
+const cors = require('cors');
 
 const connect = async() => {
     try {
@@ -16,7 +17,8 @@ const runServer = () => {
     const app = express();
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
-    
+    app.use(cors());
+
     app.use('/api',apiRoutes);
 
     app.listen(PORT, async () => {
