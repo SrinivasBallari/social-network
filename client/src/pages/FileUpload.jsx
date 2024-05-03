@@ -58,7 +58,7 @@ const FileUpload = () => {
   return (
     <>
     {user && <div className="container mx-auto mt-8">
-      <h2 className="text-2xl font-bold mb-4">File Upload</h2>
+      <h2 className="text-2xl font-bold mb-4">Upload bank statements</h2>
       <input 
         type="file" 
         onChange={handleFileChange} 

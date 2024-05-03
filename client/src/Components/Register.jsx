@@ -86,7 +86,7 @@ const Register = () => {
               type="password"
               name="password"
               id=""
-              placeholder="Paasword"
+              placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="outline-none border py-1 px-2 mt-2 rounded-md w-2/3"
