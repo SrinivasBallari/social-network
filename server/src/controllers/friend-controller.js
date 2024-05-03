@@ -1,10 +1,11 @@
 const {FriendService} = require('../services/index');
 const friendService = new FriendService();
+const FriendRequest = require('../models/friend-request');
 
 const postFriendRequest = async (req,res) => {
     try {
-        const { senderId, receiverId } = req.body;
-        const response = friendService.postFriendRequest(senderId,receiverId);
+        const { receiverId } = req.body;
+        const response = friendService.postFriendRequest(req.user.id,receiverId);
         return res.status(201).json({
             message: "successfully created friend request"
         });
@@ -41,5 +42,5 @@ const respondToFriendRequest = async (req,res) => {
 
 module.exports = {
     postFriendRequest,
-    respondToFriendRequest
+    respondToFriendRequest,
 }

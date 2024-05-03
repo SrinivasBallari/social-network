@@ -17,8 +17,18 @@ class FeedService {
             console.log(error);
             throw error;
         }
-        
     }   
+
+    async getSuggestedUsers(userId){
+        try {
+            const response = await this.userRepo.getSuggestedUsers(userId);
+            return response;
+        } catch (error) {
+            console.log(error);
+            throw error;
+            
+        }
+    }
 }
 
 module.exports = FeedService;
