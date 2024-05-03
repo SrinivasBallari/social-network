@@ -9,7 +9,7 @@ class UserRepo extends CrudRepo{
 
     async getUserByEmail(email) {
         try {
-            const user = User.findOne({
+            const user = await User.findOne({
                 email: email
             });
             return user;

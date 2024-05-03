@@ -1,11 +1,10 @@
 const { UserRepo } = require("../repositories/index");
 const { JWT_KEY } = require("../config/server-config");
-const cloudinary = require('../config/cloudinary-config');
+const cloudinary = require("../config/cloudinary-config");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");const { SALT } = require("../config/server-config");
 
 class UserService {
-    
     constructor() {
         this.userRepo = new UserRepo();
     }
@@ -41,6 +40,8 @@ class UserService {
 
     async register(data) {
         try {
+            const hashedPassword = await bcrypt.hash(data.password, SALT);
+            data.password = hashedPassword;
             const user = await this.userRepo.create(data);
             return user;
         } catch (error) {
@@ -109,22 +110,28 @@ class UserService {
         }
     }
 
-    async updateIndustryField(userId,data){
+    async updateIndustryField(userId, data) {
         try {
-            const response = await this.userRepo.update(userId,data);
+            const response = await this.userRepo.update(userId, data);
             return response;
         } catch (error) {
-            console.log("error occurred in UserService.updateIndustryField: ", error);
+            console.log(
+                "error occurred in UserService.updateIndustryField: ",
+                error
+            );
             throw error;
         }
     }
 
-    async updateUserProfile(userId,data){
+    async updateUserProfile(userId, data) {
         try {
-            const response = await this.userRepo.update(userId,data);
+            const response = await this.userRepo.update(userId, data);
             return response;
         } catch (error) {
-            console.log("error occurred in UserService.updateUserProfile: ", error);
+            console.log(
+                "error occurred in UserService.updateUserProfile: ",
+                error
+            );
             throw error;
         }
     }
